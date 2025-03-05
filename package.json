@@ -1,0 +1,37 @@
+{
+  "name": "@dstrn825/dframework",
+  "version": "1.0.1",
+  "main": "dstrn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "dstrn": "bin/dstrn.js"
+  },
+  "keywords": [],
+  "author": "dstrn",
+  "license": "SEE LICENSE IN LICENSE",
+  "description": "a lightweight JavaScript framework that lets you build whatever you like, however you like",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.0",
+    "inquirer": "^8.0.0",
+    "javascript-obfuscator": "^4.1.1",
+    "ora": "^5.4.1",
+    "simply-beautiful": "^1.0.1",
+    "uglify-js": "^3.19.3"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstrn825/dframework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dstrn825/dframework/issues"
+  },
+  "homepage": "https://github.com/dstrn825/dframework#readme"
+}

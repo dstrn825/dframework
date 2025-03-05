@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="../public/assets/favicon.ico">
+    <link rel="stylesheet" href="../lib/dstrn.css"/>
+    <link rel="stylesheet" href="../public/css/index.css"/>
+    <script src="../lib/dstrn.js"></script>
+    <title>Welcome to dframework</title>
+
+    <script defer>
+        function createNotification(){
+            // in practice you wouldn't create notifications like this
+            const notification = document.createElement("d-notification");
+            notification.setAttribute("opened", null);
+
+            const content = document.createElement("div");
+            content.classList.add("p-1", "flex-row", "justify-between", "align-center", "g-1");
+            content.style.width = "24em";
+
+            const i = document.createElement("i");
+            i.classList.add("fa-solid", "fa-xmark", "pointer", "text-secondary", "hover-text-accent-1", "tr-3");
+            
+            const div = document.createElement("div");
+            div.classList.add("flex-1", "text-primary", "overflow-ellipsis");
+            div.innerHTML = `This is the notification content`;
+
+            content.appendChild(div);
+            content.appendChild(i);
+
+            notification.appendChild(content);
+            document.body.append(notification);
+
+            // this is so stupid
+            setTimeout(() => { document.querySelector("d-notification i").addEventListener("click", () => notification.destroy()) });
+        }
+    </script>
+</head>
+<body class="dark-theme bg-container-2 preload flex-row min-h-100svh">
+
+    <div class="relative flex-column flex-center w-100 flex-1 pt-3">
+        <nav class="absolute w-100 bg-container-2 top-0 pl-2 pr-2 pt-1 flex-row align-center g-2" style="height: 3em">
+            <a href="/" class="relative flex-row g-1 h-100 align-center bold text-accent-1 no-decorations click-haptic-small tr-3">
+                <img class="relative h-100" src="../public/assets/favicon.ico">
+                dframework
+            </a>
+            <a href="https://framework.dstrn.xyz/docs" class="no-decorations text-primary hover-text-secondary click-haptic-small tr-3">docs</a>
+            <span class="ml-auto no-decorations text-primary">v1.0.0</span>
+            <a href="https://github.com/dstrn825/dframework" class="no-decorations text-primary hover-text-secondary click-haptic-small tr-3">GitHub <i class="text-secondary fa-solid fa-share"></i></a>
+        </nav>
+
+        <div class="relative bg-container-2 p-1 w-100 h-100">
+            <div class="relative bg-base flex-column flex-center w-100 h-100" style="border-radius: 10px;">
+                <div class="relative flex-column flex-center w-100 p-2">
+                    <h1 class="m-0 text-primary thin z-1 text-center">welcome to <span class="text-accent-1 bold">dframework</span></h1>
+                    <h2 class="m-0 text-secondary thin fs-1 z-1 text-center">a framework that lets you create whatever you want, however you want</h2>
+                    <div class="flex-row flex-wrap flex-center g-2 z-1 mt-1">
+                        <a class="m-0 no-decorations bold flex-row justify-between align-center bg-accent-1 hover-bg-accent-2 text-base pointer tr-3 g-2 fs-1 click-haptic-small"
+                        href="https://framework.dstrn.xyz/docs"
+                        style="border-radius: 10px; padding: .5em 1.2em .5em 1.2em;"
+                        >check the docs <i class="fa-solid fa-book"></i></a>
+                        <a href="https://framework.dstrn.xyz/" 
+                        class="m-0 no-decorations flex-row justify-between align-center g-05 text-accent-1 hover-text-accent-2 tr-3 click-haptic-small"
+                        >visit the website <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                    <img class="absolute h-100 z-0 opacity-10" style="filter: brightness(10);" src="../public/assets/favicon.ico" draggable="false">
+                </div>
+
+                <div class="relative flex-row flex-wrap justify-center g-1 w-100 h-fit px-2 pb-2">
+                    <div class="relative flex-row flex-wrap justify-center g-1 h-max w-fit">
+                        <div class="relative flex-column align-center h-fit g-1 bg-container-2 bdr-05 p-1" style="width: 18em;">
+                            <d-button class="w-100"></d-button>
+                            <d-button class="w-100" text="haptics" haptics></d-button>
+                            <d-button class="w-100" text="disabled" disabled ></d-button>
+                            <d-button class="w-100" text="trigger notification" icon="fa-solid fa-bell" onclick="createNotification()"></d-button>
+                            <d-button class="w-100" color="#b5ff6b" hoverColor="#ff7866" text="icon right" iconPosition="right" icon="fa-solid fa-crown"></d-button>
+                            <d-button class="w-100" text="right click">
+                                <d-context-menu>
+                                    <div class="w-100 flex-row g-1"><i class="fa-solid fa-arrow-right"></i> option 1</div>
+                                    <div class="w-100 flex-row g-1"><i class="fa-solid fa-arrow-right"></i> option 2</div>
+                                    <div class="w-100 flex-row g-1"><i class="fa-solid fa-arrow-right"></i> option 3</div>
+                                </d-context-menu>
+                            </d-button>
+                            <d-button class="w-100" text="open modal" onclick="document.querySelector('d-modal').open()"></d-button>
+                        </div>
+                        <div class="relative flex-column h-auto g-1" style="width: 18em;">
+                            <div class="flex-column h-fit bg-container-2 bdr-05 p-1 g-1 flex-1">
+                                <d-checkbox text="checkbox type 1"></d-checkbox>
+                                <d-checkbox text="checkbox type 2" type="2"></d-checkbox>
+                            </div>
+                            <div class="flex-column h-fit bg-container-2 bdr-05 p-1 g-1 flex-1">
+                                <d-toggle haptics>
+                                    <div class="flex-center" toggle-value="1">1</div>
+                                    <div class="flex-center" toggle-value="2" default>2</div>
+                                    <div class="flex-center" toggle-value="3">3</div>
+                                </d-toggle>
+                                <!--
+                                    <d-toggle type="2">
+                                        <div toggle-value="1">toggle 1</div>
+                                        <div toggle-value="2">toggle 2</div>
+                                        <div toggle-value="3">toggle 3</div>
+                                    </d-toggle>
+                                -->
+                            </div>
+                            <div class="flex-row h-fit justify-center bg-container-2 bdr-05 p-1 g-1 flex-1">
+                                <d-icon-button icon="backward"></d-icon-button>
+                                <d-icon-button activeColor="#b5ff6b" icon="fa-solid fa-star"></d-icon-button>
+                                <d-icon-button loader loading></d-icon-button>
+                            </div>
+    
+                            <div class="flex-column h-fit bg-container-2 bdr-05 p-1 g-1 flex-1">
+                                <d-text-input></d-text-input>
+                                <d-slider sfx></d-slider>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex-row flex-wrap justify-center g-1 h-auto w-fit">
+                        <div class="relative flex-column h-100 g-1 bg-container-2 bdr-05 p-1" style="width: 18em;">
+                            <d-color-picker opened></d-color-picker>
+                            <d-dropdown opened>
+                                <div class="w-100 p-1">
+                                    <p class="text-secondary m-0">this is the dropdown content</p>
+                                </div>
+                            </d-dropdown>
+                        </div>
+                        <div class="relative flex-column h-100 g-1" style="width: 18em;">
+                            <div class="flex-column h-fit bg-container-2 bdr-05 p-1 g-1">
+                                <d-combobox haptics options='[{"text": "option 1", "value": 1}, {"text": "option 2", "value": 2}, {"text": "option 3", "value": 3}]'></d-combobox>
+                                <d-combobox allowInput options='[{"text": "double click", "value": 1}, {"text": "option 1", "value": 2}, {"text": "option 2", "value": 3}]'></d-combobox>
+                            </div>
+                            <div class="flex-column flex-1 bg-container-2 bdr-05 p-1 g-1">
+                                <d-button text="open/close drawer" class="w-100" onclick="document.querySelector('d-drawer').handleOpenClose()"></d-button>
+                                <div class="relative w-100 flex-1 overflow-hidden">
+                                    <d-drawer direction="bottom" opened>
+                                        <div class="p-1">
+                                            <p class="text-secondary">this is the drawer content</p>
+                                        </div>
+                                    </d-drawer>
+                                </div>
+                            </div>
+                        </div>
+                        <!--
+                        <d-scroll marginSide="0" style="height: 6em;">
+                            <div class="square" style="width: 3em; background-color: aqua;"></div>
+                            <div class="square" style="width: 3em; background-color: aliceblue;"></div>
+                            <div class="square" style="width: 3em; background-color: aqua;"></div>
+                            <div class="square" style="width: 3em; background-color: aliceblue;"></div>
+                            <div class="square" style="width: 3em; background-color: aqua;"></div>
+                        </d-scroll>
+                        -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <d-modal>
+        <div class="h-fit" style="width: 16em;">
+            <div class="w-100 h-100 flex-column g-1">
+                <p class="text-secondary m-0">this is the modal content</p>
+                <d-button class="w-100" text="close modal" onclick="document.querySelector('d-modal').close()"></d-button>
+            </div>
+        </div>
+    </d-modal>
+
+</body>
+</html>
