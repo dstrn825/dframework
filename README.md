@@ -990,7 +990,7 @@ dframework provides a MongoDB API wrapper for easy integration with MongoDB data
 - simple async/await API
 
 #### Configuration
-To connect to your MongoDB servers simply open the file `/functions/lob/MongoAPI.js` and change the following files in the constructor:
+To connect to your MongoDB servers simply open the file `/functions/lob/MongoAPI.js` and change the following lines in the constructor:
 
 ```javascript
 this.servers = {
